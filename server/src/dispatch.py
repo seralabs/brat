@@ -124,19 +124,11 @@ LOGGED_ANNOTATOR_ACTION = ANNOTATION_ACTION | set((
 ))
 
 # Actions that require authentication
-REQUIRES_AUTHENTICATION = ANNOTATION_ACTION | set((
-    # Document functionality
-    'importDocument',
-
-    # Search functionality in whole collection (heavy on the CPU/disk ATM)
-    'searchTextInCollection',
-    'searchEntityInCollection',
-    'searchEventInCollection',
-    'searchRelationInCollection',
-    'searchNoteInCollection',
-
-    'tag',
-))
+REQUIRES_AUTHENTICATION = set(DISPATCHER.keys())
+REQUIRES_AUTHENTICATION.remove('login')
+REQUIRES_AUTHENTICATION.remove('logout')
+REQUIRES_AUTHENTICATION.remove('whoami')
+REQUIRES_AUTHENTICATION.remove('getCollectionInformation')
 
 # Sanity check
 for req_action in REQUIRES_AUTHENTICATION:
