@@ -124,7 +124,11 @@ LOGGED_ANNOTATOR_ACTION = ANNOTATION_ACTION | set((
 ))
 
 # Actions that require authentication
-REQUIRES_AUTHENTICATION = REQUIRES_AUTHENTICATION = set(DISPATCHER.keys()).remove('login').remove('logout').remove('whoami')
+REQUIRES_AUTHENTICATION = set(DISPATCHER.keys())
+REQUIRES_AUTHENTICATION.remove('login')
+REQUIRES_AUTHENTICATION.remove('logout')
+REQUIRES_AUTHENTICATION.remove('whoami')
+REQUIRES_AUTHENTICATION.remove('getCollectionInformation')
 
 # Sanity check
 for req_action in REQUIRES_AUTHENTICATION:
